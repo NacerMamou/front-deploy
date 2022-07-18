@@ -3,6 +3,7 @@ import { FavoriteCategoriesContext } from "../../contexts/favorite-categories.co
 import { ChartContext } from "../../contexts/chart.context";
 import { SecondaryChartContext } from "../../contexts/secondary-chart.context";
 import { CurrentCategoryContext } from "../../contexts/current-category.context";
+import { getRequest } from "../../http/request-functions";
 
 import {
   getVolumeForCustomPeriod,
@@ -11,21 +12,6 @@ import {
 } from "../../utils/date.utils";
 
 const CategorySelector = ({ id, nbKeywords, name, selected }) => {
-  function getVolumeById(categoryId) {
-    const url = `http://localhost:8000/api/volumes/${categoryId}.json`;
-    return new Promise((resolve, reject) => {
-      fetch(url)
-        .then((res) => res.json())
-        .then((res) => {
-          resolve(res);
-        })
-        .catch((err) => {
-          reject(err);
-          console.log(err);
-        });
-    });
-  }
-
   const { currentCategoryInfos, setCurrentCategoryInfos } = useContext(
     CurrentCategoryContext
   );
@@ -75,7 +61,7 @@ const CategorySelector = ({ id, nbKeywords, name, selected }) => {
       );
     }
 
-    // When a categori is clicked to be deleted
+    // When a category is clicked to be deleted
     if (parentClassName === "cards-container") {
       const updatedFavoriteCategoriesArray = removeCategoryFromFavorites({
         id: clickedCategory.id,
@@ -87,7 +73,8 @@ const CategorySelector = ({ id, nbKeywords, name, selected }) => {
       // We replace the selected element with the root category 250162
       // We get data and updates charts
       if (seletedElementId == clickedCategory.id) {
-        let newSearchVolume = await getVolumeById(250162);
+        // let newSearchVolume = await getVolumeById(250162);
+        let newSearchVolume = await getRequest("/api/volumes/250162.json");
         setCurrentCategoryInfos({
           id: 250162,
           title: "Products",
@@ -141,7 +128,8 @@ const CategorySelector = ({ id, nbKeywords, name, selected }) => {
       });
       setSeletedElementId(Number(clickedCategory.id));
 
-      let newSearchVolume = await getVolumeById(eventId);
+      // let newSearchVolume = await getVolumeById(eventId);
+      let newSearchVolume = await getRequest(`/api/volumes/${eventId}.json`);
       setData(newSearchVolume);
 
       let newfiltredData = getVolumeForCustomPeriod(
