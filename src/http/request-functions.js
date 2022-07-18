@@ -1,5 +1,5 @@
 // const mainDomain = "http://localhost:8015";
-const mainDomain = "www.data-visualization.nmamou.com";
+const mainDomain = "https://www.data-visualization.nmamou.com";
 
 export async function getRequest(endpoint) {
   const url = `${mainDomain}${endpoint}`;
