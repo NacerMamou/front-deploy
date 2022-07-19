@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   width: 90%;
+  min-height: 100vh;
   .charts-container {
     display: flex;
     flex-direction: column;
@@ -57,7 +58,7 @@
           margin-right: 0.8vw;
         }
         & p {
-          color: $red-color--1;
+          color: $green-color--2;
           font-weight: 700;
           font-size: 1.5vw;
         }
@@ -94,7 +95,8 @@
       position: relative;
       justify-content: space-between;
       width: 100%;
-      height: 18vw;
+      min-height: 35vh;
+      background-color: $background-color--2;
       .current-category-container {
         display: flex;
         justify-content: center;
@@ -143,9 +145,9 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-      height: 18vw;
+      min-height: 35vh;
       border-radius: 0.8vw;
-
+      background-color: $background-color--2;
       .current-category-container {
         display: flex;
         justify-content: center;
@@ -408,7 +410,8 @@
           width: 4.2vw;
           height: 4.2vw;
           border-radius: 50%;
-          position: relative;
+
+          // position: relative;
           margin-top: 2vw;
           &::after {
             content: "";
@@ -454,6 +457,13 @@
             border-color: $green-color--1;
             filter: brightness(1.2);
             box-shadow: 0 0 0.3vw $green-color--1;
+
+            @media all and (max-width: 576px) {
+              border: 3vw solid;
+              border-color: $green-color--1;
+              filter: brightness(1.2);
+              box-shadow: 0 0 0.3vw $green-color--1;
+            }
           }
         }
         .minimum-circle {
@@ -468,6 +478,12 @@
             border-color: $blue-color--1;
             filter: brightness(5);
             box-shadow: 0 0 0.3vw $blue-color--1;
+            @media all and (max-width: 576px) {
+              border: 3vw solid;
+              border-color: $blue-color--1;
+              filter: brightness(1.2);
+              box-shadow: 0 0 0.3vw $blue-color--1;
+            }
           }
         }
         .maximum-circle {
@@ -482,6 +498,12 @@
             border-color: yellow;
             filter: brightness(1.2);
             box-shadow: 0 0 0.3vw yellow;
+            @media all and (max-width: 576px) {
+              border: 3vw solid;
+              border-color: yellow;
+              filter: brightness(1.2);
+              box-shadow: 0 0 0.3vw yellow;
+            }
           }
         }
       }
@@ -536,9 +558,9 @@
         }
       }
       .main-container {
-        height: 20vh;
+        height: 22vh;
         .current-category-container {
-          display: none;
+          // display: none;
           padding-top: 0.6vw;
           border-radius: 0.8vw 0.8vw 0 0;
           & h2 {
@@ -565,9 +587,9 @@
       }
 
       .secondary-container {
-        height: 20vh;
+        height: 22vh;
         .current-category-container {
-          display: none;
+          // display: none;
           padding-top: 0.6vw;
           & h2 {
             width: 80%;
@@ -728,10 +750,10 @@
         .page-name-container {
           & i {
             font-size: 5.5vw;
-            padding-right: 2.5vw;
+            padding-right: 2.2vw;
           }
           & h2 {
-            font-size: 5vw;
+            font-size: 6vw;
           }
         }
       }
@@ -744,10 +766,10 @@
           align-items: center;
           & i {
             font-size: 5.5vw;
-            margin-right: 3vw;
+            margin-right: 1.8vw;
           }
           & p {
-            font-size: 4.5vw;
+            font-size: 4.8vw;
           }
         }
         .categories-dashboard-container {
@@ -756,16 +778,17 @@
         }
       }
       .main-container {
-        min-height: 21.5vh;
+        min-height: 50vw;
+        padding-top: 2vw;
         .current-category-container {
-          display: none;
+          // display: none;
           border-radius: 0.8vw 0.8vw 0 0;
           & h2 {
-            font-size: 2.2vw;
+            font-size: 3vw;
             width: 100%;
             * {
               margin: 0 0.6vw;
-              font-size: 2.2vw;
+              font-size: 3vw;
             }
           }
         }
@@ -776,16 +799,17 @@
       }
 
       .secondary-container {
-        min-height: 21.5vh;
+        z-index: 0;
+        height: 50vw;
+        padding-top: 3vw;
         .current-category-container {
-          padding-top: 0.6vw;
-          display: none;
+          // display: none;
           & h2 {
             width: 100%;
-            font-size: 2.2vw;
+            font-size: 3vw;
             * {
               margin: 0 0.6vw;
-              font-size: 2.2vw;
+              font-size: 3vw;
             }
           }
         }
@@ -799,7 +823,8 @@
     }
 
     .extra-container {
-      padding: 3vw 2.5vw;
+      margin-top: 3vw;
+      padding: 3vw 3vw;
       border-radius: 0 0 0.8vw 0.8vw;
       min-height: 24vh;
       .volumes-comparator {
@@ -808,34 +833,36 @@
           .category-details {
             flex-direction: column;
             align-items: flex-start;
-            width: 40%;
+            justify-content: center;
+            width: 45%;
             margin-bottom: 3vw;
             .title {
               display: none;
             }
             .keywords {
-              font-size: 2.5vw;
+              font-size: 3.1vw;
               margin-right: 2vw;
+              margin-bottom: 0.8vw;
             }
             .id {
-              font-size: 2.5vw;
+              font-size: 3.1vw;
               margin-right: 1vw;
             }
           }
           .period-selection {
-            width: 60%;
+            width: 55%;
             margin-bottom: 5vw;
             .date-selectors {
               .date-selector {
                 width: 48%;
                 .label {
-                  font-size: 2.5vw;
+                  font-size: 3.2vw;
                   margin-bottom: 0.11vw;
                 }
                 .selector {
                   border-radius: 0.15vw;
-                  font-size: 2.5vw;
-                  padding: 0.3vw 0.2vw;
+                  font-size: 3.2vw;
+                  padding: 1vw 0.2vw;
                 }
               }
             }
@@ -851,8 +878,8 @@
               .circle-dot-container {
                 padding-top: 1vw;
                 .circle-dot {
-                  width: 2.3vw;
-                  height: 2.3vw;
+                  width: 3vw;
+                  height: 3vw;
                 }
               }
             }
@@ -863,31 +890,31 @@
                 width: 25%;
                 padding-top: 1vw;
                 .circle-dot {
-                  width: 2.3vw;
-                  height: 2.3vw;
+                  width: 3vw;
+                  height: 3vw;
                 }
               }
             }
           }
         }
         .circle-comparators {
-          top: 17%;
-          right: 39%;
-          flex-direction: column;
+          flex-direction: row;
+          flex-wrap: nowrap;
           align-items: center;
-          width: 25%;
-          padding: 0 1.5vw;
+          width: 100%;
+          padding: 0 5vw;
+          position: static;
           .circle-comparator {
-            width: 12vw;
-            height: 12vw;
+            width: 18vw;
+            height: 18vw;
             position: relative;
             margin-top: 2.5vw;
             &::after {
-              width: 12vw;
-              height: 12vw;
+              width: 18vw;
+              height: 18vw;
             }
             .percentage {
-              font-size: 2.6vw;
+              font-size: 3.5vw;
               text-shadow: 0 0 0.5vw;
               .number {
                 margin-left: 0.35vw;
@@ -897,10 +924,19 @@
               }
             }
             .title {
-              font-size: 2.6vw;
+              font-size: 3.5vw;
             }
           }
         }
+
+        // .average-circle {
+        //   &::after {
+        //     border: vw solid;
+        //     border-color: $green-color--1;
+        //     filter: brightness(1.2);
+        //     box-shadow: 0 0 0.3vw $green-color--1;
+        //   }
+        // }
       }
     }
   }
